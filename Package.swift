@@ -12,7 +12,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/IGAWorksDev/ap-APSSPSDK-SPM.git", from: "3.4.0"),
-        .package(url: "https://github.com/InMobi/InMobiSDK-Swift-Package.git", exact: "11.3.0"),
+        .package(url: "https://github.com/InMobi/InMobiSDK-Swift-Package.git", exact: "11.4.0"),
     ],
     targets: [
         .target(name: "APSSPMediationInMobi",

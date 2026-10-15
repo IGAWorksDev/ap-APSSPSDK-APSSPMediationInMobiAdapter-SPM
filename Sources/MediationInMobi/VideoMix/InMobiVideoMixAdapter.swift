@@ -7,12 +7,16 @@ import UIKit
 import APSSPSDK
 
 final public class InMobiVideoMixAdapter: APSSPVideoMixAdAdapterProtocol {
-    public var rootViewController: UIViewController?
-    public var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
+    public weak var rootViewController: UIViewController?
+    public weak var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
     public var videoMixAdType: APSSPVideoMixAdType = .RewardVideo
     private var placementDic: [String: String] = [:]
     private var interstitialVideoAdapter: InMobiInterstitialVideoAdapter?
     private var rewardVideoAdapter: InMobiRewardVideoAdapter?
+
+    deinit {
+        APLogger.debug("InMobiVideoMixAdapter deinit")
+    }
 
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         self.placementDic = placementDic; self.rootViewController = rootViewController
@@ -23,7 +27,7 @@ final public class InMobiVideoMixAdapter: APSSPVideoMixAdAdapterProtocol {
         videoMixDelegate = delegate
         switch videoMixAdType {
         case .Interstitial:
-            videoMixDelegate?.videoMixAdLoadFail(error: .noAdError, type: videoMixAdType, errorMessage: "Ad type not supported")
+            videoMixDelegate?.videoMixAdLoadFail(error: .nextMediation, type: videoMixAdType, errorMessage: "Ad type not supported")
         case .InterstitialVideo:
             interstitialVideoAdapter = InMobiInterstitialVideoAdapter(placementDic: placementDic, rootViewController: rootViewController, info: [:])
             interstitialVideoAdapter?.connectDelegate(delegate: self)

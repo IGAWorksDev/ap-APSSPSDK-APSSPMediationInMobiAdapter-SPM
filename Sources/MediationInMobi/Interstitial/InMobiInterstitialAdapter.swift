@@ -9,12 +9,16 @@ import APSSPSDK
 
 final public class InMobiInterstitialAdapter: APSSPInterstitialAdapterProtocol {
 
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
 
-    public var delegate: APSSPInterstitialAdapterDelegate?
+    public weak var delegate: APSSPInterstitialAdapterDelegate?
 
     private var interstitialAd: InMobiMediationInterstitialAd?
 
+
+    deinit {
+        APLogger.debug("InMobiInterstitialAdapter deinit")
+    }
 
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         let placementId = placementDic[APSSPPlacementKey.inMobiPlacementId.rawValue] ?? ""

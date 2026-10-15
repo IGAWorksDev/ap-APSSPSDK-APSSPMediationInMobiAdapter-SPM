@@ -9,12 +9,16 @@ import APSSPSDK
 
 final public class InMobiInterstitialVideoAdapter: APSSPInterstitialVideoAdapterProtocol {
 
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
 
-    public var delegate: APSSPInterstitialVideoAdapterDelegate?
+    public weak var delegate: APSSPInterstitialVideoAdapterDelegate?
 
     private var interstitialVideoAd: InMobiMediationInterstitialVideoAd
 
+
+    deinit {
+        APLogger.debug("InMobiInterstitialVideoAdapter deinit")
+    }
 
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         let placementId = placementDic[APSSPPlacementKey.inMobiPlacementId.rawValue] ?? ""

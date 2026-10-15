@@ -10,7 +10,7 @@ import InMobiSDK
 
 final class InMobiMediationInterstitialVideoAd: NSObject {
 
-    var delegate: APSSPInterstitialVideoAdapterDelegate?
+    weak var delegate: APSSPInterstitialVideoAdapterDelegate?
 
     private let placementId: String
 

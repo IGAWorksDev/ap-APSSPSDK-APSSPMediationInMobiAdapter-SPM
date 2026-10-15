@@ -9,12 +9,16 @@ import APSSPSDK
 
 final public class InMobiRewardVideoAdapter: APSSPRewardVideoAdapterProtocol {
 
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
 
-    public var delegate: APSSPRewardVideoAdapterDelegate?
+    public weak var delegate: APSSPRewardVideoAdapterDelegate?
 
     private var rewardVideoAd: InMobiMediationRewardVideoAd
 
+
+    deinit {
+        APLogger.debug("InMobiRewardVideoAdapter deinit")
+    }
 
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         let placementId = placementDic[APSSPPlacementKey.inMobiPlacementId.rawValue] ?? ""

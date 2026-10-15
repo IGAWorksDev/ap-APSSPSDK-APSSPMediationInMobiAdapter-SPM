@@ -16,7 +16,7 @@ final class InMobiMediationBannerView: UIView {
 
     private var bannerAd: IMBanner?
 
-    private var rootViewController: UIViewController?
+    private weak var rootViewController: UIViewController?
 
     private var bannerType: APSSPBannerSize
 

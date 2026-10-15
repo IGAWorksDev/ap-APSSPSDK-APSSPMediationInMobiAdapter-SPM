@@ -10,11 +10,11 @@ import InMobiSDK
 
 final class InMobiMediationRewardVideoAd: NSObject {
 
-    var delegate: APSSPRewardVideoAdapterDelegate?
+    weak var delegate: APSSPRewardVideoAdapterDelegate?
 
     private let placementId: String
 
-    private let rootViewController: UIViewController?
+    private weak var rootViewController: UIViewController?
 
     private var rewardedAd: IMInterstitial?
 
